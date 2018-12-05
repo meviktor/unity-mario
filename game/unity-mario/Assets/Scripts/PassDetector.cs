@@ -4,6 +4,8 @@ public class PassDetector : MonoBehaviour {
 
     public GameObject whoWillPass;
     bool isNecessaryToListen = true;
+
+    public static string STAR_POST_PASSED = "starpostpassed";
 	
 	// Update is called once per frame
 	void Update () {
@@ -18,6 +20,15 @@ public class PassDetector : MonoBehaviour {
                 whoWillPass.GetComponent<Respawner>().startPosition = transform.position;
                 this.GetComponentInChildren<Animator>().Play("StarPostHit");
                 isNecessaryToListen = false;
+                if (PlayerPrefs.GetInt(STAR_POST_PASSED) == 1)
+                {
+                    Debug.Log("'Pass a star post' achieved earlier!");
+                }
+                else
+                {
+                    PlayerPrefs.SetInt(STAR_POST_PASSED, 1);
+                    Debug.Log("'Pass a star post' now achieved!");
+                }
             }
         }
 	}

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SonicDestroyMonitor : MonoBehaviour {
+    public UIController uiController;
     private void OnTriggerEnter2D()
     {
         GameObject sonic = GameObject.FindGameObjectWithTag("Sonic");
         MoveSonicAfterDestroy(sonic);
         DestroyMonitor();
+        uiController.addRing(10);
     }
 
     private void MoveSonicAfterDestroy(GameObject sonic)

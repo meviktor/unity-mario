@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - Bullet
   - Deathpoint
+  - UIControlling
   layers:
   - Default
   - TransparentFX

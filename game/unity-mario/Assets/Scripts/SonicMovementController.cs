@@ -2,6 +2,8 @@
 
 public class SonicMovementController : MonoBehaviour {
 
+    public UIController uiController;
+
     private Rigidbody2D rigidboy;
     private Animator anim;
     public LayerMask groundLayerMask;
@@ -75,6 +77,7 @@ public class SonicMovementController : MonoBehaviour {
 
         if (transform.position.y < fallDeathCheck.transform.position.y)
         {
+            uiController.resetRing();
             GameObject.FindGameObjectWithTag("GameManager").
                 GetComponent<RespawnController>().respawn();
         }

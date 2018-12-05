@@ -1,11 +1,22 @@
 ﻿using UnityEngine;
 
 public class EnemyOctopusDestroy : MonoBehaviour {
+
+    public static string DESTROY_FIRST_OCTOPUS = "firstoctopusdestroyed0";
     private void OnTriggerEnter2D()
     {
         GameObject sonic = GameObject.FindGameObjectWithTag("Sonic");
         MoveSonicAfterDestroy(sonic);
         DestroyOctopus();
+        if (PlayerPrefs.GetInt(DESTROY_FIRST_OCTOPUS) == 1)
+        {
+            Debug.Log("'Killed first octopus' achiedved earlier!");
+        }
+        else
+        {
+            PlayerPrefs.SetInt(DESTROY_FIRST_OCTOPUS, 1);
+            Debug.Log("'Killed first octopus' now achiedved!");
+        }
     }
 
     private void MoveSonicAfterDestroy(GameObject sonic)
